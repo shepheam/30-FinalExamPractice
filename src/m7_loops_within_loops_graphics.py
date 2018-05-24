@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Ashley Shepherd.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -101,6 +101,42 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # ------------------------------------------------------------------
+
+    circle = rg.Circle(point, radius)
+    x = point.x
+    y = circle.center.y
+
+    for k in range(n):
+        x1 = x - (radius * k)
+        x2 = x + (radius * k)
+        for j in range(k):
+            center = (x1, y)
+            circletop = rg.Circle(center, radius)
+            circletop.fill_color = color
+            circletop.attach_to(window)
+
+            center2 = (x2, y)
+            circlebottom = rg.Circle(center2, radius)
+            circlebottom.fill_color = color
+            circlebottom.attach_to(window)
+
+            start_circle1 = rg.Point(x1 - radius, y)
+            end_circle1 = rg.Point(x1 + radius, y)
+            line1 = rg.Line(start_circle1, end_circle1)
+            line1.attach_to(window)
+
+            start_circle2 = rg.Point(x2 - radius, y)
+            end_circle2 = rg.Point(x2 + radius, y)
+            line2 = rg.Line(start_circle2, end_circle2)
+            line2.attach_to(window)
+
+        x1 = x1 + radius * 2
+        x2 = x2 + radius * 2
+    window.render()
+
+    
+
+
 
 
 def run_test_many_hourglasses():
