@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS, SEQUENCES and MUTATION  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Ashley Shepherd.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -35,6 +35,23 @@ def run_test_zero_changer():
     #   Try do do some unexpected things like empty lists or an empty tuple.
     # ------------------------------------------------------------------
 
+    # Test 2:
+    test2 = ([5, 6, 0, 1], [6, 1, 4, 2, 7, 0], [0, 0, 0], [6, 1, 6])
+    expected1 = ([5, 6, 1, 1], [6, 1, 4, 2, 7, 2], [3, 4, 5], [6, 1, 6])
+    zero_changer(test2)
+    print()
+    print('Test 2:')
+    print('  Expected:', expected1)
+    print('  Actual:  ', test2)
+
+    # Test 3:
+    test3 = ([1, 2, 0, 5], [3, 5, 8, 0], [2, 6, 1, 0, 8], [6, 8, 0, 0, 7])
+    expected1 = ([1, 2, 1, 5], [3, 5, 8, 2], [2, 6, 1, 3, 8], [6, 8, 4, 5, 7])
+    zero_changer(test3)
+    print()
+    print('Test 3:')
+    print('  Expected:', expected1)
+    print('  Actual:  ', test3)
 
 def zero_changer(tuple_of_lists):
     """
@@ -61,7 +78,7 @@ def zero_changer(tuple_of_lists):
       :type tuple_of_lists: tuple of list[int]
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -69,8 +86,12 @@ def zero_changer(tuple_of_lists):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  10 minutes.
     # ------------------------------------------------------------------
-
-
+    total = 0
+    for k in range(len(tuple_of_lists)):
+        for j in range(len(tuple_of_lists[k])):
+            if tuple_of_lists[k][j] == 0:
+                total = total + 1
+                tuple_of_lists[k][j] = total
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
